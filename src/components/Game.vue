@@ -1,9 +1,6 @@
 <template>
   <div class="game-container">
-    <div v-if="hasWon" class="won-container" @click="setup">
-      <h1>You Won!</h1>
-      <p>Play Again</p>
-    </div>
+    <Win v-if="hasWon" @playAgain="setup"/>
     <div v-else v-for="y in size" :key="y" class="game-row">
       <Switch v-for="(toggled, x) in grid[y-1]" :key="x"
               :isOn="toggled === true" @click="toggle(x,y-1)"/>
@@ -13,10 +10,14 @@
 
 <script>
 import Switch from '@/components/Switch.vue';
+import Win from '@/components/Win.vue';
 
 export default {
   name: 'Game',
-  components: { Switch },
+  components: {
+    Win,
+    Switch,
+  },
   props: {
     size: {
       type: Number,
@@ -109,15 +110,6 @@ export default {
   .game-row {
     display: flex;
     flex-direction: row;
-  }
-
-  .won-container {
-    text-align: center;
-    cursor: pointer;
-
-    h1, p {
-      color: white;
-    }
   }
 }
 </style>
