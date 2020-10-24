@@ -1,6 +1,10 @@
 <template>
   <div class="game-container">
-    <div v-for="y in size" :key="y" class="game-row">
+    <div v-if="hasWon" class="won-container" @click="setup">
+      <h1>You Won!</h1>
+      <p>Play Again</p>
+    </div>
+    <div v-else v-for="y in size" :key="y" class="game-row">
       <Switch v-for="(toggled, x) in grid[y-1]" :key="x"
               :isOn="toggled === true" @click="toggle(x,y-1)"/>
     </div>
@@ -21,6 +25,7 @@ export default {
   data() {
     return {
       grid: [],
+      hasWon: false,
     };
   },
   methods: {
@@ -49,6 +54,8 @@ export default {
 
       const rate = .05;
 
+      this.hasWon = false;
+
       do {
         this.grid = [];
 
@@ -64,11 +71,19 @@ export default {
       this.toggleAt(x + 1, y);
       this.toggleAt(x, y - 1);
       this.toggleAt(x, y + 1);
+
+      this.checkForWin();
     },
     toggleAt(x, y) {
       if (y >= 0 && x >= 0 && y < this.size && x < this.size) {
         this.grid[y][x] = !this.grid[y][x];
       }
+    },
+    checkForWin() {
+      const onSwitches = this.grid.flat()
+        .filter((toggled) => toggled === true);
+
+      this.hasWon = onSwitches.length === 0;
     },
   },
   watch: {
