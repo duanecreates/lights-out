@@ -27,7 +27,7 @@ export default {
         const row = [];
 
         for (let i = 0; i < n; i++) {
-          row.push(Math.random() > rate ? 0 : 1);
+          row.push(Math.random() < rate);
         }
 
         return row;
@@ -36,7 +36,7 @@ export default {
       function hasAnyOn(grid) {
         for (let y = 0; y < grid.length; y++) {
           for (let x = 0; x < grid.length; x++) {
-            if (grid[y][x] === 1) {
+            if (grid[y][x] === true) {
               return true;
             }
           }
@@ -54,6 +54,19 @@ export default {
           this.grid.push(generateGridRow(this.size, rate));
         }
       } while (!hasAnyOn(this.grid));
+    },
+    toggle(x, y) {
+      // toggle switch of clicked element and all adjacent ones
+      this.toggleAt(x, y);
+      this.toggleAt(x - 1, y);
+      this.toggleAt(x + 1, y);
+      this.toggleAt(x, y - 1);
+      this.toggleAt(x, y + 1);
+    },
+    toggleAt(x, y) {
+      if (y >= 0 && x >= 0 && y < this.size && x < this.size) {
+        this.grid[y][x] = !this.grid[y][x];
+      }
     },
   },
   watch: {
