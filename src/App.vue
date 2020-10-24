@@ -2,6 +2,8 @@
   <div class="app-container">
     <Settings v-model="size"/>
     <Game :size="size"/>
+    <p class="instructions">Try to turn off all the lights.
+      When a light is pressed, that light and all adjacent lights are toggled.</p>
     <a class="github" target="_blank" href="https://github.com/DuaneCreates/lights-out">
       <img src="../public/github.svg"/>
     </a>
@@ -54,5 +56,12 @@ body {
   height: 100vh;
   width: 100vw;
   padding-top: 50px;
+
+  p.instructions {
+    margin-top: 100px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+  }
 }
 </style>
