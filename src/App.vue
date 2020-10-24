@@ -2,6 +2,9 @@
   <div class="app-container">
     <Settings v-model="size"/>
     <Game :size="size"/>
+    <a class="github" target="_blank" href="https://github.com/DuaneCreates/lights-out">
+      <img src="../public/github.svg"/>
+    </a>
   </div>
 </template>
 
@@ -34,6 +37,17 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.github {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  img {
+    height: 50px;
+    width: auto;
+  }
 }
 
 .app-container {
