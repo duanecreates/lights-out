@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      size: 5,
+      size: 5, // n is 5 by default
     };
   },
   methods: {},

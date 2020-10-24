@@ -31,6 +31,7 @@ export default {
   },
   methods: {
     setup() {
+      // Generate a row in a grid, randomizing the toggled state based on rate.
       function generateGridRow(n, rate) {
         const row = [];
 
@@ -41,6 +42,7 @@ export default {
         return row;
       }
 
+      // Checks if any cell of the grid is toggled on
       function hasAnyOn(grid) {
         for (let y = 0; y < grid.length; y++) {
           for (let x = 0; x < grid.length; x++) {
@@ -53,14 +55,17 @@ export default {
         return false;
       }
 
-      const rate = .05;
+      const rate = .05; // 5% chance to be switched on
 
-      this.hasWon = false;
+      this.hasWon = false; // reset the game state to 'playing'
 
+      // generate a grid, check if at least one of the grid cells is on.
+      // if all are off, generate another one.
       do {
         this.grid = [];
 
         for (let n = 0; n < this.size; n++) {
+          // for each row in n, generate a row
           this.grid.push(generateGridRow(this.size, rate));
         }
       } while (!hasAnyOn(this.grid));
@@ -76,11 +81,13 @@ export default {
       this.checkForWin();
     },
     toggleAt(x, y) {
+      // toggle a specific cell
       if (y >= 0 && x >= 0 && y < this.size && x < this.size) {
         this.grid[y][x] = !this.grid[y][x];
       }
     },
     checkForWin() {
+      // flattens the grid and checks if all the switches are off
       const onSwitches = this.grid.flat()
         .filter((toggled) => toggled === true);
 
@@ -89,6 +96,7 @@ export default {
   },
   watch: {
     size() {
+      // when n changes, re-generate the grid
       this.setup();
     },
   },
