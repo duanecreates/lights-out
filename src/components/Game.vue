@@ -1,16 +1,18 @@
 <template>
   <div class="game-container">
     <div v-for="y in size" :key="y" class="game-row">
-      <div v-for="(cell, x) in grid[y-1]" :key="x" class="game-cell" :class="{on: cell === 1}">
-
-      </div>
+      <Switch v-for="(toggled, x) in grid[y-1]" :key="x"
+              :isOn="toggled === true" @click="toggle(x,y-1)"/>
     </div>
   </div>
 </template>
 
 <script>
+import Switch from '@/components/Switch.vue';
+
 export default {
   name: 'Game',
+  components: { Switch },
   props: {
     size: {
       type: Number,
@@ -90,17 +92,6 @@ export default {
   .game-row {
     display: flex;
     flex-direction: row;
-
-    .game-cell {
-      width: 40px;
-      height: 40px;
-      margin: 5px;
-      background-color: darkgreen;
-
-      &.on {
-        background-color: greenyellow;
-      }
-    }
   }
 }
 </style>
