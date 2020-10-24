@@ -5,7 +5,8 @@ Play the game at [https://lights-out.duanecreates.com](https://lights-out.duanec
 ## Documentation
 
 ### Play Instructions
-Run ```yarn install``` and ```yarn serve``` in your terminal (in project root folder) and go to the localhost URL provided in the terminal.
+Run ```yarn install``` and ```yarn serve``` in your terminal (in project root folder) and go to the localhost URL provided in the terminal.  
+In case of linebreak errors, please run ```yarn lint```.  
 
 ### Components Structure
 `App` takes care of wrapping the whole app.  
