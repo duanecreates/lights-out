@@ -26,7 +26,19 @@ export default {
 </script>
 
 <style lang="scss">
-.app-container {
+body {
+  padding: 0;
+  margin: 0;
+}
 
+* {
+  box-sizing: border-box;
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  padding-top: 50px;
+  background-color: #122C34;
 }
 </style>

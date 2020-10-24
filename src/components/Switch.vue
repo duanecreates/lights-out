@@ -17,17 +17,18 @@ export default {
 .switch-container {
   width: 40px;
   height: 40px;
-  margin: 5px;
-  background-color: darkgreen;
-  border: none;
+  margin: 1px;
+  background-color: #0091AD;
+  border: 2px solid black;
   cursor: pointer;
+  border-radius: 5px;
 
   &:active, &:focus {
     outline: none;
   }
 
   &.on {
-    background-color: greenyellow;
+    background-color: #44FFD2;
   }
 }
 </style>

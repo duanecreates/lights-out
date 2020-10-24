@@ -100,13 +100,24 @@ export default {
 
 <style lang="scss" scoped>
 .game-container {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
 
   .game-row {
     display: flex;
     flex-direction: row;
+  }
+
+  .won-container {
+    text-align: center;
+    cursor: pointer;
+
+    h1, p {
+      color: white;
+    }
   }
 }
 </style>

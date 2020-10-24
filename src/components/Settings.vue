@@ -1,7 +1,9 @@
 <template>
   <div class="settings-container">
-    <input type="range" min="3" max="50" :value="modelValue"
+    <p><small>slide to scale grid</small></p>
+    <input type="range" min="3" max="10" :value="modelValue"
            @input="(event) => $emit('update:modelValue', +event.target.value)">
+    <p><small>n = {{ modelValue }}</small></p>
   </div>
 </template>
 
@@ -16,6 +18,12 @@ export default {
 
 <style lang="scss" scoped>
 .settings-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  p small {
+    color: white;
+  }
 }
 </style>
