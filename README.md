@@ -1,5 +1,7 @@
 # lights-out
 
+Play the game at [https://lights-out.duanecreates.com](https://lights-out.duanecreates.com).  
+
 ## Documentation
 
 ### Play Instructions
