@@ -42,7 +42,7 @@ body {
 }
 
 .github {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
 
@@ -53,9 +53,8 @@ body {
 }
 
 .app-container {
-  height: 100vh;
-  width: 100vw;
-  padding-top: 50px;
+  min-height: 100vh;
+  padding: 50px 25px;
 
   p.instructions {
     margin-top: 100px;
